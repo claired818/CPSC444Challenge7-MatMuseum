@@ -1,3 +1,10 @@
+/*
+1. What material is currently used throughout the museum?
+    The current material is the basic material.
+2. Why do the objects appear flat and similar?
+    They appear flat because lighting doesn't affect the basic material.
+*/
+
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
@@ -45,7 +52,7 @@ const controls = new OrbitControls(camera, renderer.domElement);
 
 const ambientLight = new THREE.AmbientLight(
     0xffffff,
-    0.4
+    1.0
 );
 
 scene.add(ambientLight);
@@ -68,6 +75,24 @@ const helper = new THREE.PointLightHelper(
 
 scene.add(helper);
 
+const sphereLight = new THREE.SpotLight(
+    0xffffff,
+    150
+);
+
+sphereLight.position.set(-13, 7, -2);
+
+sphereLight.castShadow = true;
+
+scene.add(sphereLight);
+
+// const sphereLighthelper = new THREE.SpotLightHelper(
+//     sphereLight,
+//     0.5
+// );
+
+// scene.add(sphereLighthelper);
+
 // ---------------------------------------------------
 // Floor
 // ---------------------------------------------------
@@ -76,7 +101,7 @@ const floorGeometry =
     new THREE.PlaneGeometry(40, 40);
 
 const floorMaterial =
-    new THREE.MeshBasicMaterial({
+    new THREE.MeshStandardMaterial({
         color: 0x444444
     });
 
@@ -181,12 +206,19 @@ const blueMaterial =
 
 createPedestal(-9, -4);
 
+const goldMat = new THREE.MeshStandardMaterial({
+        color: 0xffff00,
+        roughness: 0.25,
+        metalness: 0.97
+    });
+
 const sphere =
     new THREE.Mesh(
         new THREE.SphereGeometry(1, 32, 32),
-        redMaterial
+        goldMat
     );
 
+sphereLight.target = sphere;
 placeOnPedestal(sphere, -9, -4);
 sphere.castShadow = true;
 
