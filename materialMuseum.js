@@ -57,24 +57,6 @@ const ambientLight = new THREE.AmbientLight(
 
 scene.add(ambientLight);
 
-const pointLight = new THREE.PointLight(
-    0xffffff,
-    200
-);
-
-pointLight.position.set(5, 10, 5);
-
-pointLight.castShadow = true;
-
-scene.add(pointLight);
-
-const helper = new THREE.PointLightHelper(
-    pointLight,
-    0.5
-);
-
-scene.add(helper);
-
 const sphereLight = new THREE.SpotLight(
     0xffffff,
     150
@@ -92,6 +74,24 @@ scene.add(sphereLight);
 // );
 
 // scene.add(sphereLighthelper);
+
+const cubeLight = new THREE.PointLight(
+    0xffffff,
+    200
+);
+
+cubeLight.position.set(-3, 3, -1);
+
+cubeLight.castShadow = true;
+
+scene.add(cubeLight);
+
+const cubeLighthelper = new THREE.PointLightHelper(
+    cubeLight,
+    0.5
+);
+
+scene.add(cubeLighthelper);
 
 // ---------------------------------------------------
 // Floor
@@ -226,10 +226,16 @@ scene.add(sphere);
 
 createPedestal(-3, -4);
 
+const plasticMat = new THREE.MeshPhongMaterial({
+        color: 0x00ffff,
+        shininess: 75,
+        specular: 0xffffff
+    });
+
 const cube =
     new THREE.Mesh(
         new THREE.BoxGeometry(2,2,2),
-        cyanMaterial
+        plasticMat
     );
 
 placeOnPedestal(cube, -3, -4);
