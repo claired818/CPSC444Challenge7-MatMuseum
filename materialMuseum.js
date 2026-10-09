@@ -52,7 +52,7 @@ const controls = new OrbitControls(camera, renderer.domElement);
 
 const ambientLight = new THREE.AmbientLight(
     0xffffff,
-    1.0
+    0.75
 );
 
 scene.add(ambientLight);
@@ -86,12 +86,12 @@ cubeLight.castShadow = true;
 
 scene.add(cubeLight);
 
-// const cubeLighthelper = new THREE.PointLightHelper(
-//     cubeLight,
-//     0.5
-// );
+const cubeLighthelper = new THREE.PointLightHelper(
+    cubeLight,
+    0.5
+);
 
-// scene.add(cubeLighthelper);
+scene.add(cubeLighthelper);
 
 const statueLight = new THREE.PointLight(
     0xffffff,
@@ -195,7 +195,7 @@ const redMaterial =
 
 const whiteMaterial =
     new THREE.MeshBasicMaterial({
-        color: 0xf5f5f5
+        color: 0xdddddd
     });
 
 const orangeMaterial =
@@ -263,10 +263,17 @@ scene.add(cube);
 
 createPedestal(3, -4);
 
+const crystalMat = new THREE.MeshPhysicalMaterial({
+        color: 0xff0000,
+        transmission: 1.0,
+        metalness: 1.0,
+        roughness: 0.25,
+    });
+
 const crystal =
     new THREE.Mesh(
         new THREE.OctahedronGeometry(1.5),
-        yellowMaterial
+        crystalMat
     );
 
 placeOnPedestal(crystal, 3, -4);
@@ -297,6 +304,10 @@ scene.add(statue);
 
 createPedestal(-9, 5);
 
+const ringMat = new THREE.MeshToonMaterial({
+        color: 0xff8c42
+    });
+
 const torus =
     new THREE.Mesh(
         new THREE.TorusGeometry(
@@ -305,7 +316,7 @@ const torus =
             16,
             100
         ),
-        orangeMaterial
+        ringMat
     );
 
 placeOnPedestal(torus, -9, 5);
@@ -315,6 +326,11 @@ scene.add(torus);
 
 createPedestal(-3, 5);
 
+const pyramidMat = new THREE.MeshLambertMaterial({
+        color: 0x4169e1,
+        emissive: 0x0000aa
+    });
+
 const pyramid =
     new THREE.Mesh(
         new THREE.ConeGeometry(
@@ -322,7 +338,7 @@ const pyramid =
             3,
             4
         ),
-        blueMaterial
+        pyramidMat
     );
 
 placeOnPedestal(pyramid, -3, 5);
