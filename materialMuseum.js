@@ -80,18 +80,36 @@ const cubeLight = new THREE.PointLight(
     200
 );
 
-cubeLight.position.set(-3, 3, -1);
+cubeLight.position.set(-3, 6, -6);
 
 cubeLight.castShadow = true;
 
 scene.add(cubeLight);
 
-const cubeLighthelper = new THREE.PointLightHelper(
-    cubeLight,
+// const cubeLighthelper = new THREE.PointLightHelper(
+//     cubeLight,
+//     0.5
+// );
+
+// scene.add(cubeLighthelper);
+
+const statueLight = new THREE.PointLight(
+    0xffffff,
+    150
+);
+
+statueLight.position.set(11, 6, -3);
+
+statueLight.castShadow = true;
+
+scene.add(statueLight);
+
+const statueLighthelper = new THREE.PointLightHelper(
+    statueLight,
     0.5
 );
 
-scene.add(cubeLighthelper);
+scene.add(statueLighthelper);
 
 // ---------------------------------------------------
 // Floor
@@ -207,7 +225,7 @@ const blueMaterial =
 createPedestal(-9, -4);
 
 const goldMat = new THREE.MeshStandardMaterial({
-        color: 0xffff00,
+        color: 0xffff55,
         roughness: 0.25,
         metalness: 0.97
     });
@@ -256,12 +274,16 @@ crystal.castShadow = true;
 
 scene.add(crystal);
 
+const statueMat = new THREE.MeshToonMaterial({
+        color: 0xff4fd8
+    });
+
 createPedestal(9, -4);
 
 const statue =
     new THREE.Mesh(
         new THREE.ConeGeometry(1,3,32),
-        magentaMaterial
+        statueMat
     );
 
 placeOnPedestal(statue, 9, -4);
