@@ -1,0 +1,8 @@
+1. Which material looked the most realistic?
+      In my opinion the gold sphere, the standard material, looks the most realistic.
+2. Which material looked the most cartoon-like?
+      The toon material looked the most cartoon-like.
+3. Which material would you use for a metal robot?
+      I would use the standard materail for a metal robot.
+4. How did adding the spotlight affect the scene?
+      Adding a spotlight caused the objects to cast long shadows on the floor. It also added additional highlights to the materials that have highlights.
