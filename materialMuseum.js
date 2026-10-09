@@ -331,6 +331,8 @@ scene.add(pyramid);
 
 createPedestal(3, 5);
 
+const knotMat = new THREE.MeshNormalMaterial();
+
 const normalObject =
     new THREE.Mesh(
         new THREE.TorusKnotGeometry(
@@ -339,7 +341,7 @@ const normalObject =
             100,
             16
         ),
-        purpleMaterial
+        knotMat
     );
 
 placeOnPedestal(normalObject, 3, 5);
@@ -349,6 +351,10 @@ scene.add(normalObject);
 
 createPedestal(9, 5);
 
+const treeMat = new THREE.MeshLambertMaterial({
+        color: 0x2ecc71
+    });
+
 const tree =
     new THREE.Mesh(
         new THREE.CylinderGeometry(
@@ -357,7 +363,7 @@ const tree =
             3,
             6
         ),
-        greenMaterial
+        treeMat
     );
 
 placeOnPedestal(tree, 9, 5);
